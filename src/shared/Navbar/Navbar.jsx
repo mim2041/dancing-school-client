@@ -11,7 +11,8 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-green-100 py-8 lg:justify-between fixed z-10 max-w-screen-xl bg-opacity-30">
+        <div className="">
+            <div className="navbar bg-green-100 py-4 lg:justify-between fixed z-10 max-w-screen-xl bg-opacity-30">
             <div className="navbar-start">
                 <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,7 +24,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <img src={logo1} width={"50px"} className="mx-auto rounded-lg" alt="" />
-                    <a className="btn btn-ghost normal-case text-xl">Dancing School</a>
+                    <a className="btn btn-ghost normal-case lg:text-xl">Dancing School</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -31,6 +32,7 @@ const Navbar = () => {
                 {navItems}
                 </ul>
             </div>
+        </div>
         </div>
     );
 };
