@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import signupImg from '../../assets/images/signup.png'
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-    
+    <Toaster></Toaster>
     const [error, setError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -25,6 +26,14 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User created successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
             .catch(error => {
                 console.log(error.message);
@@ -71,7 +80,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="text" placeholder="password" {...register("confirm")} className="input input-bordered" required/>
+                                <input type="password" placeholder="retype password" {...register("confirm")} className="input input-bordered" required/>
                             </div>
 
                             </div>
@@ -89,7 +98,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text">Gender</span>
                                     </label>
-                                    <select {...register("confirm")} className="select select-bordered w-full max-w-xs">
+                                    <select {...register("gender")} className="select select-bordered w-full max-w-xs">
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>

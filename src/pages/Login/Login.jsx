@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import loginImg from '../../assets/images/login.png';
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -16,18 +18,29 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Login successfully',
+                    showConfirmButton: false,
+                    timer: 1000
+                  })
+            })
+            .catch(error => {
+                console.log(error)
             })
     };
     console.log(errors);
 
     return (
-        <div>
+        <div className="pt-28 bg-green-200">
+            <h1 className="text-4xl font-bold text-center mb-4 lg:mt-12">Sign Up Now</h1>
             <div className="hero min-h-screen">
-                <form onSubmit={handleSubmit(onSubmit)} className="hero-content flex-col lg:flex-row justify-between lg:gap-12">
+                <div className="hero-content flex-col lg:flex-row justify-between lg:gap-12">
                     <div className="w-full">
-                        <img src={loginImg} className="w-3/4 mx-auto" alt="" />
+                        <img src={loginImg} width={"500px"} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm lg:max-w-lg shadow-2xl bg-base-100 mt-8">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card flex-shrink-0 w-full max-w-sm lg:max-w-md shadow-2xl bg-base-100 mt-8">
                         <div className="card-body">
                             
                             <div className="form-control">
@@ -44,13 +57,19 @@ const Login = () => {
                                 <input type="password" {...register("password")}placeholder="password" className="input input-bordered" required/>
                             </div>
 
+                            <p className="text-danger">{error}</p>
+
+                            
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up"/>
+                                <input className="btn btn-primary" type="submit" value="Login"/>
                             </div>
+
+                            <p>New to Dancing School? <Link to='/signup'>Create an Account</Link></p>
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
+                </div>
+            
         </div>
     );
 };
