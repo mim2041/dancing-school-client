@@ -4,14 +4,17 @@ import signupImg from '../../assets/images/signup.png'
 
 
 const SignUp = () => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+    const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => {
+    console.log(data)
+  };
+  console.log(errors);
 
     return (
         <div className="pt-28 bg-green-200">
             <h1 className="text-4xl font-bold text-center mb-4 lg:mt-12">Sign Up Now</h1>
             <div className="hero min-h-screen">
-                <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))} className="hero-content flex-col lg:flex-row justify-between lg:gap-12">
+                <form onSubmit={handleSubmit(onSubmit)} className="hero-content flex-col lg:flex-row justify-between lg:gap-12">
                     <div className="w-full">
                         <img src={signupImg} className="w-3/4 mx-auto" alt="" />
                     </div>
@@ -59,7 +62,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text">Gender</span>
                                     </label>
-                                    <select className="select select-bordered w-full max-w-xs">
+                                    <select {...register("confirm")} className="select select-bordered w-full max-w-xs">
                                         <option disabled selected>Select</option>
                                         <option>Male</option>
                                         <option>Female</option>
