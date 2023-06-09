@@ -1,13 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import signupImg from '../../assets/images/signup.png'
-
+import { AuthContext } from "../../Providers/AuthProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
+    
+    const [error, setError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data)
-  };
+
+    const {createUser} = useContext(AuthContext);
+
+    const onSubmit = data => {
+        console.log(data);
+
+        // check passwords
+        if(data.password !== data.confirm){
+            setError('Passwords do not match');
+            return
+        }
+
+        // create new user with email and password
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message);
+                toast.error(error.message);
+            })
+
+        
+    };
   console.log(errors);
 
     return (
@@ -24,13 +50,13 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" placeholder="name" {...register("name")} className="input input-bordered" />
+                                <input type="text" placeholder="name" {...register("name")} className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" {...register("email")} className="input input-bordered" />
+                                <input type="email" placeholder="email" {...register("email")} className="input input-bordered" required/>
                             </div>
 
                             <div className="lg:flex">
@@ -38,23 +64,24 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" {...register("password")}placeholder="password" className="input input-bordered" />
+                                <input type="password" {...register("password")}placeholder="password" className="input input-bordered" required/>
                             </div>
 
                             <div className="form-control lg:ml-4">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="text" placeholder="password" {...register("confirm")} className="input input-bordered" />
+                                <input type="text" placeholder="password" {...register("confirm")} className="input input-bordered" required/>
                             </div>
 
                             </div>
+                            <p className="text-danger">{error}</p>
 
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="file" className="file-input file-input-bordered w-full" />
+                                <input type="file" className="file-input file-input-bordered w-full" required/>
                             </div>
 
                             <div className="lg:flex justify-between gap-4">
@@ -63,7 +90,6 @@ const SignUp = () => {
                                         <span className="label-text">Gender</span>
                                     </label>
                                     <select {...register("confirm")} className="select select-bordered w-full max-w-xs">
-                                        <option disabled selected>Select</option>
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
@@ -85,25 +111,7 @@ const SignUp = () => {
                     </div>
                 </form>
                 </div>
-            {/* <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
-                <input {...register("name")} type="text" placeholder="First name" />
-                
-                <input {...register("email")} type="email" placeholder="First name" />
-                
-                <input {...register("password")} type="text" placeholder="First name" />
-                
-                <input {...register("confirm")} type="text" placeholder="First name" />
-
-                <select {...register("gender", { required: true })}>
-                    <option value="">Select...</option>
-                    <option value="A">Male</option>
-                    <option value="B">Female</option>
-                </select>
-                
-                <textarea {...register("aboutYou")} placeholder="About you" />
-                <p>{data}</p>
-                <input type="submit" />
-            </form> */}
+            
         </div>
     );
 };
