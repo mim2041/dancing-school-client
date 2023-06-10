@@ -18,6 +18,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/addclass'>Add A Class</Link></li>
         <li><Link to='/dashboard/mycart'>
           <button className="btn gap-2">
             <FaShoppingCart/>
@@ -26,7 +27,7 @@ const Navbar = () => {
         </Link></li>
         {
             user ? <>
-            <li><span>{user?.displayName}</span></li>
+            <li><span>{user?.email}</span></li>
             <li><button onClick={handleLogOut} className="">Log Out</button></li>
             </> : <li><Link to="/login">Login</Link></li>
         }

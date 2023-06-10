@@ -1,0 +1,80 @@
+[
+    {
+        "_id": "642c155b2c4774f05c36eeac",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    },
+    {
+        "_id": "642c155b2c4774f05c36eead",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeae",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeaf",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeag",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeah",
+        "class_name": "Ballet",
+        "photo": "https://www.liveabout.com/thmb/xPrfWtUbQlc4NnvWXXu17cDHKlg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/73552664-56a21ddc5f9b58b7d0c6b3a6.jpg",
+        "available_seat": 20,
+        "students_enrolled": 15,
+        "price": "5000/month",
+        "instructor": "Alfred Nobel",
+        "instructor_photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCQWlFt5WtuzBj8K3lUG0nArnGxh_O5NllA&usqp=CAU",
+        "email": "alfredo@gmail.com",
+        "no_of_classes": 10,
+        "name_of_classes": ["Ballet", "Bally Dance", "Flamenco"]
+    }
+]
