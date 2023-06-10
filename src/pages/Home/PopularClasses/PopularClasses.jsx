@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { useEffect, useState } from "react";
-import ClassCard from "./ClassCard";
 
 
 const PopularClasses = () => {
@@ -20,8 +19,8 @@ const PopularClasses = () => {
     } ,[])
 
     return (
-        <div>
-            <h1 className="text-4xl font-semibold text-center text-orange-500">Popular Classes Section</h1>
+        <div className="my-12">
+            <h1 className="text-4xl font-semibold text-center text-orange-500 mb-12">Popular Classes Section</h1>
             <Swiper
                 slidesPerView={4}
                 // centeredSlides={true}
