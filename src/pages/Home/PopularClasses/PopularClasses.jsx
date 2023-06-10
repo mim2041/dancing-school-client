@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
 
 import { useEffect, useState } from "react";
-import useFetch from "../../../hooks/useFetch";
 import ClassCard from "./ClassCard";
+
 
 const PopularClasses = () => {
 
@@ -21,6 +21,7 @@ const PopularClasses = () => {
 
     return (
         <div>
+            <h1 className="text-4xl font-semibold text-center text-orange-500">Popular Classes Section</h1>
             <Swiper
                 slidesPerView={4}
                 // centeredSlides={true}
@@ -32,11 +33,15 @@ const PopularClasses = () => {
                 modules={[Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                    <div>
-                        
-                    </div>
-                </SwiperSlide>
+                <div className="mt-12">
+                    {
+                        classes.map(singleClass => <SwiperSlide key={singleClass._id}>
+                            <img src={singleClass.photo} alt="" />
+                            <h2 className="text-center text-2xl text-orange-500">{singleClass.class_name}</h2>
+                        </SwiperSlide>)
+                    }
+                </div>
+                
             </Swiper>
         </div>
     );

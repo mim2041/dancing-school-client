@@ -1,4 +1,4 @@
-import React from 'react';
+
 import notFoundImg from '../assets/images/notFound.jpg'
 import { Link } from 'react-router-dom';
 

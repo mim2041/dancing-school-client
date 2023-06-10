@@ -1,9 +1,18 @@
 
 
-const ClassCard = () => {
+const ClassCard = ({singleClass}) => {
+    const {_id, class_name} = singleClass;
+    
     return (
-        <div>
-            
+        <div className="card w-96 bg-base-100 shadow-xl">
+            <figure><img src={_id} alt="Shoes" /></figure>
+            <div className="card-body">
+                <h2 className="card-title">Shoes!</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="card-actions justify-end">
+                <button className="btn btn-primary">Buy Now</button>
+                </div>
+            </div>
         </div>
     );
 };
