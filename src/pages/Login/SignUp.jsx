@@ -20,11 +20,14 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("new user", data);
 
+   
     // check passwords
     if (data.password !== data.confirm) {
       setError("Passwords do not match");
       return;
     }
+
+    
 
     // create new user with email and password
     createUser(data.email, data.password)
@@ -60,15 +63,14 @@ const SignUp = () => {
         Sign Up Now
       </h1>
       <div className="hero min-h-screen">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
+        <div
           className="hero-content flex-col lg:flex-row justify-between lg:gap-12"
         >
           <div className="w-full">
             <img src={signupImg} className="w-3/4 mx-auto" alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm lg:max-w-lg shadow-2xl bg-base-100 mt-8">
-            <div className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -99,13 +101,14 @@ const SignUp = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    {...register("password")}
-                    placeholder="password"
-                    className="input input-bordered"
-                    required
-                  />
+                  <input type="password" {...register("password", { required: true,
+                                 minLength: 6,
+                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z].*[a-z]).{8}$/
+                                 })} placeholder="password" className="input input-bordered" />
+                            {errors.password?.type === 'required' && <span className="text-red-600">Password is required</span>}
+                            {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
+                            
+                            {errors.password?.type === 'pattern' && <span className="text-red-600">Password must have one uppercase latter and one special character</span>}
                 </div>
 
                 <div className="form-control lg:ml-4">
@@ -174,15 +177,15 @@ const SignUp = () => {
                   value="Sign Up"
                 />
               </div>
-            </div>
+                <p>
+                    Already have an account?{" "}
+                    <Link to="/login">
+                    <span>Login</span>
+                    </Link>
+                </p>
+            </form>
           </div>
-          <p>
-            Already have an account?{" "}
-            <Link to="/login">
-              <span>Login</span>
-            </Link>
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 
 
-const PolularClasses = () => {
+const ClassCard = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PolularClasses = () => {
     );
 };
 
-export default PolularClasses;
+export default ClassCard;

@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import Instructors from "../pages/Instructors/Instructors/Instructors";
 import AddAClass from "../pages/Instructors/AddAClass";
+import NotFound from "../others/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: "*",
+      element: <NotFound></NotFound>
+    }
   ]);
 
 export default router;
