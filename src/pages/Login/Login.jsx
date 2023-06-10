@@ -4,10 +4,15 @@ import { useForm } from "react-hook-form";
 import loginImg from "../../assets/images/login.png";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { register, handleSubmit, formState: { errors }} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const { signIn } = useContext(AuthContext);
 
@@ -43,11 +48,11 @@ const Login = () => {
           <div className="w-full">
             <img src={loginImg} width={"500px"} alt="" />
           </div>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
+          <div
             className="card flex-shrink-0 w-full max-w-sm lg:max-w-md shadow-2xl bg-base-100 mt-8"
           >
-            <div className="card-body">
+            <form
+            onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -88,8 +93,9 @@ const Login = () => {
                 New to Dancing School?{" "}
                 <Link to="/signup">Create an Account</Link>
               </p>
-            </div>
-          </form>
+            </form>
+              <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
     </div>
