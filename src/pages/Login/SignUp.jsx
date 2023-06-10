@@ -20,29 +20,47 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("new user", data);
 
-   
     // check passwords
     if (data.password !== data.confirm) {
       setError("Passwords do not match");
       return;
     }
 
-    
-
     // create new user with email and password
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        handleUpdateUserProfile(data.name, data.photoURL);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User created successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/");
+         const userInfo = {
+           name: data.name,
+           email: data.email,
+           photo: data.photoURL,
+           
+           role: "student",
+         };
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log("save", data);
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created successfully",
+                  showConfirmButton: false,
+                  timer: 1000,
+                });
+                navigate("/");
+              });
+          })
+          .catch((error) => console.error(error));
       })
       .catch((error) => {
         console.log(error.message);
@@ -50,13 +68,7 @@ const SignUp = () => {
         toast.error(error.message);
       });
   };
-  console.log(errors);
-  const handleUpdateUserProfile = (name, photoURL) => {
-   
-    updateUserProfile(name, photoURL)
-      .then(() => {})
-      .catch((error) => console.error(error));
-  };
+
   return (
     <div className="pt-28 bg-green-200">
       <h1 className="text-4xl font-bold text-center mb-4 lg:mt-12">

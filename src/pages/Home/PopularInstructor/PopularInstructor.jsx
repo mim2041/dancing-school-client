@@ -34,7 +34,7 @@ const PopularInstructor = () => {
                     {
                         instructors.map(instructor => <SwiperSlide key={instructor._id}>
                             <img src={instructor.instructor_photo} alt="" />
-                            <h2 className="text-center text-2xl text-orange-500">{instructor.instructor}</h2>
+                            <h2 className=" text-2xl text-orange-500">{instructor.instructor}</h2>
                         </SwiperSlide>)
                     }
                 </div>
