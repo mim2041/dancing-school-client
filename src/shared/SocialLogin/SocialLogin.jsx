@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SocialLogin = () => {
@@ -16,6 +17,13 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Login successfully",
+                    showConfirmButton: false,
+                    timer: 1000,
+                  });
 
                 const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
                 fetch(`http://localhost:5000/users`, {
@@ -25,12 +33,12 @@ const SocialLogin = () => {
                             },
                             body: JSON.stringify(saveUser)
                         })
-                            .then(res => res.json())
-                            .then(() => {
-                                navigate(from, {replace: true});
-                            })
+                    .then(res => res.json())
+                    .then(() => {
+                        
+                        navigate(from, {replace: true});
+                    })
 
-                
             })
     }
     return (

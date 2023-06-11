@@ -14,29 +14,54 @@ const Navbar = () => {
             .catch(error => console.log(error))
     }
 
-    const navItems = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/instructors'>Instructors</Link></li>
-        <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/addclass'>Add A Class</Link></li>
-        <li><Link to='/dashboard/mycart'>
-          <button className="btn bg-transparent -mt-4 gap-2">
-            <FaShoppingCart/>
-            <div className="badge badge-secondary">+0</div>
-          </button>
-        </Link></li>
-        {
-            user ? <>
-            <li><span>{user?.email}</span></li>
-            <li><button onClick={handleLogOut} className="">Log Out</button></li>
-            </> : <li><Link to="/login">Login</Link></li>
-        }
-                    
-    </>
+    const navItems = (
+      <>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/instructors">Instructors</Link>
+        </li>
+        <li>
+          <Link to="/classes">Classes</Link>
+        </li>
+
+        {user ? (
+          <>
+            <li>
+              <Link to="/dashboard">
+                <button className="btn">
+                  <FaShoppingCart />
+                  <div className="badge badge-secondary">+0</div>
+                </button>
+              </Link>
+            </li>
+            <div className="">
+              <img
+                title={user.displayName ? user.displayName : null}
+                className="rounded-full border-solid   border-primary border-2" 
+                width='50px'
+                height='50px'
+                src={user.photoURL ? user.photoURL : null}
+              />
+            </div>
+            <li>
+              <button onClick={handleLogOut} className="">
+                Log Out
+              </button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
+      </>
+    );
 
     return (
         <div className="">
-            <div className="navbar bg-green-100 py-4 lg:justify-between fixed z-10 max-w-screen-xl bg-opacity-30">
+            <div className="navbar bg-green-100 py-4 lg:justify-between lg:items-center fixed z-10 max-w-screen-xl bg-opacity-30">
             <div className="navbar-start">
                 <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
