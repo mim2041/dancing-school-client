@@ -15,7 +15,8 @@ const ClassesCard = ({cls, user}) => {
         setSelectedClass(id);
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div>
+            <div className={(available_seat===0) ? 'bg-red-200 card w-96 shadow-xl' : 'card w-96 bg-base-100 shadow-xl'}>
             <figure><img src={photo} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{class_name}</h2>
@@ -26,6 +27,7 @@ const ClassesCard = ({cls, user}) => {
                 <button disabled={available_seat === 0 || !user} onClick={() => handleSelectClass(_id)} className="btn btn-primary">Select</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

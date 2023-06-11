@@ -5,44 +5,64 @@ import Classes from "../pages/Classes/Classes/Classes";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import Instructors from "../pages/Instructors/Instructors/Instructors";
-import AddAClass from "../pages/Instructors/AddAClass";
-import NotFound from "../others/NotFound";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      children: [
-        {
-          path: '/',
-          element: <Home></Home>
-        },
-        {
-          path: 'instructors',
-          element: <Instructors></Instructors>
-        },
-        {
-          path: 'classes',
-          element: <Classes></Classes>
-        },
-        {
-          path: 'login',
-          element: <Login></Login>
-        },
-        {
-          path: 'signup',
-          element: <SignUp></SignUp>
-        },
-        {
-          path: 'addclass',
-          element: <AddAClass></AddAClass>
-        }
-      ]
-    },
-    {
-      path: "*",
-      element: <NotFound></NotFound>
-    }
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "instructors",
+        element: <Instructors></Instructors>,
+      },
+      {
+        path: "classes",
+        element: <Classes></Classes>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "signup",
+        element: <SignUp></SignUp>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "home",
+        element: <h1>Home</h1>,
+      },
+      {
+        path: "settings",
+        element: <h1>Settings</h1>,
+      },
+    ],
+  },
+  // {
+  //   path: "/dashboard",
+  //   element: (
+  //     <Dashboard></Dashboard>
+  //     // <PrivateRoute>
+  //     //   <DashBoard></DashBoard>
+  //     // </PrivateRoute>
+  //   ),
+  //   children: [
+  //     {
+  //       path: "",
+  //       element: <h1>1</h1>,
+  //     },
+  //   ],
+  // },
+]);
 
 export default router;

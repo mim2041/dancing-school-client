@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { FaUserCog } from "react-icons/fa";
 import { MdOutlineSettingsApplications } from "react-icons/md";
-import Skeleton from "../Others/Skeleton/Skeleton";
 import useInstructor from "../Hooks/useInstructor";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
-import Navbar from "../shared/Navbar/Navbar";
 import useStudent from "../Hooks/useStudent";
 
 const DashboardLayout = () => {
