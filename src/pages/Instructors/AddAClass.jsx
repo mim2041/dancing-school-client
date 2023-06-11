@@ -56,14 +56,14 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text font-semibold">Instructor Name</span>
                         </label>
-                        <input type="text" defaultValue={user?.displayName} {...register("instructor_name", {required: true, maxLength: 80})} className="input input-bordered w-full " />
+                        <input type="text" defaultValue={user?.displayName} {...register("instructor_name", {required: true, maxLength: 80})} className="input input-bordered w-full " readOnly/>
                         
                     </div>
                     <div className="form-control w-full my-4">
                         <label className="label">
                             <span className="label-text font-semibold">Instructor Email</span>
                         </label>
-                        <input type="email" defaultValue={user?.email}  {...register("email", {required: true, maxLength: 80})} className="input input-bordered w-full " />
+                        <input type="email" defaultValue={user?.email}  {...register("email", {required: true, maxLength: 80})} className="input input-bordered w-full " readOnly/>
                         
                     </div>
                 </div>

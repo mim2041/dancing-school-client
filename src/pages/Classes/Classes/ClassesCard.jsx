@@ -23,7 +23,7 @@ const ClassesCard = ({cls, user}) => {
                 <p>Available Seats: {available_seat}</p>
                 <p>Price: {price}/month</p>
                 <div className="card-actions justify-end">
-                <button disabled={available_seat === 0 || !user} onClick={() => hand} className="btn btn-primary">Select</button>
+                <button disabled={available_seat === 0 || !user} onClick={() => handleSelectClass(_id)} className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>
