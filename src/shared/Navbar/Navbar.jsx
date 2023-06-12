@@ -3,15 +3,25 @@ import logo1 from '../../assets/images/logo1.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import { useState } from "react";
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext);
+    const [isNightMode, setIsNightMode] = useState(false);
     // console.log(user?.displayName);
     const handleLogOut = () => {
         logOut()
             .then(() => {})
             .catch(error => console.log(error))
+    }
+
+    const handleToggleMode = () => {
+      if(isNightMode === false){
+        setIsNightMode(true);
+      }
+      setIsNightMode(false);
     }
 
     const navItems = (
@@ -56,6 +66,11 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </li>
         )}
+        <li>
+          <button onClick={handleToggleMode}>{
+            isNightMode ? <BsFillMoonFill/> : <BsFillSunFill/>
+          }</button>
+        </li>
       </>
     );
 

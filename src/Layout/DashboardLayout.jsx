@@ -8,6 +8,8 @@ import useAdmin from "../Hooks/useAdmin";
 import useStudent from "../Hooks/useStudent";
 import { AiFillFileAdd } from "react-icons/ai";
 import { ImFilesEmpty } from "react-icons/im";
+import { LuFileSpreadsheet } from "react-icons/lu";
+import { MdPayment } from "react-icons/md";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -123,6 +125,7 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
+
             {isInstructor && (
               <>
                 <li>
@@ -183,7 +186,8 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
-            {isStudent && (
+
+             {isStudent && (
               <>
                 <li>
                   <Link
@@ -199,7 +203,7 @@ const DashboardLayout = () => {
                     to="/mySelectedClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <ImFilesEmpty className="w-6 h-6"></ImFilesEmpty>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Selected Classes
                     </span>
@@ -210,9 +214,20 @@ const DashboardLayout = () => {
                     to="/myEnrolledClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <LuFileSpreadsheet className="w-6 h-6"></LuFileSpreadsheet>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Enrolled Classes
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/myEnrolledClasses"
+                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <MdPayment className="w-6 h-6"></MdPayment>
+                    <span className="flex-1 ml-3 whitespace-nowrap">
+                      Payment
                     </span>
                   </Link>
                 </li>
@@ -221,7 +236,7 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </aside>
-      <div className=" sm:ml-64">
+      <div className=" sm:ml-32">
         <div className="mb-5">
           <Outlet></Outlet>
         </div>

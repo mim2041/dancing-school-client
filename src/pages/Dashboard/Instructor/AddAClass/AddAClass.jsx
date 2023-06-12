@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import addClassImg from '../../../assets/images/addclass.jfif';
+import addClassImg from '../../../../assets/images/addclass.jfif';
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import { AuthContext } from "../../../../Providers/AuthProvider";
 
 
 const AddAClass = () => {
