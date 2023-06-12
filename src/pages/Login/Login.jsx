@@ -5,9 +5,14 @@ import loginImg from "../../assets/images/login.png";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
+import { BiHide } from "react-icons/bi";
+import { BsFillEyeFill } from "react-icons/bs";
+
 
 const Login = () => {
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -37,6 +42,10 @@ const Login = () => {
       });
   };
   console.log(errors);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
 
   return (
     <div className="pt-28 bg-green-200">
@@ -71,12 +80,15 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   {...register("password")}
                   placeholder="password"
-                  className="input input-bordered"
-                  required
+                  className="input input-bordered relative"
+                  required 
                 />
+                <button className="absolute right-10 top-44" onClick={handleShowPassword}>
+                  { showPassword ? <BiHide/> : <BsFillEyeFill/>}
+                </button>
               </div>
 
               <p className="text-danger">{error}</p>

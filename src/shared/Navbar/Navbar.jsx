@@ -18,10 +18,8 @@ const Navbar = () => {
     }
 
     const handleToggleMode = () => {
-      if(isNightMode === false){
-        setIsNightMode(true);
-      }
-      setIsNightMode(false);
+      setIsNightMode(!isNightMode)
+      // setIsNightMode(false);
     }
 
     const navItems = (
