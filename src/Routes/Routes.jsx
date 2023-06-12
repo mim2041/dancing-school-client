@@ -6,8 +6,8 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import Instructors from "../pages/Instructors/Instructors/Instructors";
 import DashboardLayout from "../Layout/DashboardLayout";
-import AddAClass from "../pages/Instructors/AddAClass";
 import SelectedClasses from "../pages/Instructors/SelectedClasses";
+import AddAClass from "../pages/Dashboard/Instructor/AddAClass";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +35,6 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: 'addclass',
-        element: <AddAClass></AddAClass>
-      },
-      {
         path: 'myclasses',
         element: <SelectedClasses></SelectedClasses>
       }
@@ -56,6 +52,10 @@ const router = createBrowserRouter([
         path: "settings",
         element: <h1>Settings</h1>,
       },
+      {
+        path: 'addclass',
+        element: <AddAClass></AddAClass>
+      }
     ],
   },
   // {
