@@ -8,7 +8,6 @@ import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 import { BiHide } from "react-icons/bi";
 import { BsFillEyeFill } from "react-icons/bs";
 
-
 const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -21,14 +20,12 @@ const Login = () => {
 
   const { signIn } = useContext(AuthContext);
 
-  
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
-  }
-  
+  };
+
   const onSubmit = (data) => {
     console.log(data);
-
 
     signIn(data.email, data.password)
       .then((result) => {
@@ -48,7 +45,6 @@ const Login = () => {
   };
   console.log(errors);
 
-
   return (
     <div className="pt-28 bg-green-200">
       <h1 className="text-4xl font-bold text-center mb-4 lg:mt-12">
@@ -59,11 +55,8 @@ const Login = () => {
           <div className="w-full">
             <img src={loginImg} width={"500px"} alt="" />
           </div>
-          <div
-            className="card flex-shrink-0 w-full max-w-sm lg:max-w-md shadow-2xl bg-base-100 mt-8"
-          >
-            <form
-            onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <div className="card flex-shrink-0 w-full max-w-sm lg:max-w-md shadow-2xl bg-base-100 mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -82,14 +75,18 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   {...register("password")}
                   placeholder="password"
                   className="input input-bordered relative"
-                  required 
+                  required
                 />
-                <button className="absolute right-10 top-44" onClick={handleShowPassword} type="button">
-                  { showPassword ? <BiHide/> : <BsFillEyeFill/>}
+                <button
+                  className="absolute right-10 top-44"
+                  onClick={handleShowPassword}
+                  type="button"
+                >
+                  {showPassword ? <BiHide /> : <BsFillEyeFill />}
                 </button>
               </div>
 
@@ -108,7 +105,7 @@ const Login = () => {
                 <Link to="/signup">Create an Account</Link>
               </p>
             </form>
-              <SocialLogin></SocialLogin>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@ const AddAClass = () => {
             photo: imgData.data.url,
             class_name: data.class_name,
             instructor: data.instructor_name,
+            instructor_photo: user?.photoURL,
             email: data.email,
             available_seat: data.available_seat,
             price: data.price,

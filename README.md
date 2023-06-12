@@ -7,4 +7,4 @@ The Website is about a dance school that provides many types of dances. The func
 * There is a instructors page, where anyone can see our instructors who takes the classes of our institutes.
 * There are three types of users, who have different dashboards to view the informations in their own perspective.
 
-# Live link of my website: https://dancing-school-27a07.web.app/
+# Live link of my website: 

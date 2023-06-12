@@ -6,9 +6,13 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import Instructors from "../pages/Instructors/Instructors/Instructors";
 import DashboardLayout from "../Layout/DashboardLayout";
-import SelectedClasses from "../pages/Instructors/SelectedClasses";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClass";
+import InstructorRoute from "./InstructorRoute/InstructorRoute";
 import AddAClass from "../pages/Dashboard/Instructor/AddAClass/AddAClass";
-import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
   {
@@ -35,32 +39,48 @@ const router = createBrowserRouter([
         path: "signup",
         element: <SignUp></SignUp>,
       },
-      {
-        path: 'myclasses',
-        element: <SelectedClasses></SelectedClasses>
-      }
     ],
   },
   {
     path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: "home",
-        element: <h1>Home</h1>,
+        path: "manageClasses",
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
-        path: "settings",
-        element: <h1>Settings</h1>,
+        path: "manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'addclass',
-        element: <AddAClass></AddAClass>
+        path: "myClasses",
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
+          </InstructorRoute>
+        ),
       },
       {
-        path: 'myclasses',
-        element: <MyClasses></MyClasses>
-      }
+        path: "addAClass",
+        element: (
+          <InstructorRoute>
+            <AddAClass></AddAClass>
+          </InstructorRoute>
+        ),
+      },
     ],
   },
   // {

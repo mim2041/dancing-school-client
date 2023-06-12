@@ -7,7 +7,7 @@ import instructorbg from '../../../assets/images/instructorbg.jpg';
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('https://dancing-school-server.vercel.app/instructors')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -21,7 +21,7 @@ const Instructors = () => {
             ></Cover>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 bg-green-200 sm:pb-12 lg:p-12">
             {
-                instructors.map(singleInstructor => <InstructorClass
+                instructors?.map(singleInstructor => <InstructorClass
                     key={singleInstructor._id}
                     singleInstructor={singleInstructor}
                 ></InstructorClass>)

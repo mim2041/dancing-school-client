@@ -3,7 +3,6 @@ import logo1 from '../../assets/images/logo1.jpg'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 
 const Navbar = () => {
@@ -133,9 +132,9 @@ const Navbar = () => {
                     type="checkbox"
                     onChange={handleToggle}
                     // show toggle image based on localstorage theme
-                    // checked={theme === "light" ? false : true}
+                    checked={theme === "light" ? false : true}
                   />
-                  {theme ? <BsFillMoonFill/> : <BsFillSunFill/>}
+                  Dark
                 </label>
               </button>
             </li>

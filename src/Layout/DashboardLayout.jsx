@@ -6,10 +6,8 @@ import useInstructor from "../Hooks/useInstructor";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
 import useStudent from "../Hooks/useStudent";
-import { AiFillFileAdd } from "react-icons/ai";
-import { ImFilesEmpty } from "react-icons/im";
-import { LuFileSpreadsheet } from "react-icons/lu";
-import { MdPayment } from "react-icons/md";
+import Navbar from "../shared/Navbar/Navbar";
+import Footer from "../shared/Footer/Footer";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +18,7 @@ const DashboardLayout = () => {
   const toggleSideNav = () => setIsOpen((prevState) => !prevState);
   return (
     <div className="mx-10 ">
+      <Navbar></Navbar>
       <button
         onClick={toggleSideNav}
         data-drawer-target="cta-button-sidebar"
@@ -46,11 +45,11 @@ const DashboardLayout = () => {
 
       <aside
         id="cta-button-sidebar"
-        className="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full  sm:translate-x-0"
+        className="fixed top-32 left-0 z-40 w-72 h-screen transition-transform -translate-x-full  sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
-          <Link to="/">
+          {/* <Link to="/">
             <div className="flex justify-center items-center m-5 ">
               <img
                 src="https://i.ibb.co/vmJXmwy/logo1.jpg"
@@ -59,7 +58,7 @@ const DashboardLayout = () => {
               />
               <p className="text-2xl m-2 font-semibold text-[black] text-center"></p>
             </div>
-          </Link>
+          </Link> */}
           <ul className="space-y-2 font-medium mx-5 ">
             {isAdmin && (
               <>
@@ -125,12 +124,11 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
-
             {isInstructor && (
               <>
                 <li>
                   <Link
-                    to="/dashboard/member"
+                    to="/"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -143,40 +141,42 @@ const DashboardLayout = () => {
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                       <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
-                    <span className="ml-3">Dashboard</span>
-                  </Link>
-                </li>
-                
-                <li>
-                  <Link
-                    to="/dashboard/addclass"
-                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <div className="text-2xl">
-                    <AiFillFileAdd/>
-                    </div>
-                    <span className="flex-1 ml-3 whitespace-nowrap">
-                      Add A Class
-                    </span>
+                    <span className="ml-3">Home</span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/member/settings"
+                    to="/dashboard/myClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <div className="text-2xl">
-                      <ImFilesEmpty/>
-                    </div>
+                    <svg
+                      aria-hidden="true"
+                      className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    </svg>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Classes
                     </span>
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/dashboard/addAClass"
+                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <span className="flex-1 ml-3 whitespace-nowrap">
+                      Add A Class
+                    </span>
+                  </Link>
+                </li>
               </>
             )}
-
-             {isStudent && (
+            {isStudent && (
               <>
                 <li>
                   <Link
@@ -192,7 +192,7 @@ const DashboardLayout = () => {
                     to="/mySelectedClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <ImFilesEmpty className="w-6 h-6"></ImFilesEmpty>
+                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Selected Classes
                     </span>
@@ -203,20 +203,9 @@ const DashboardLayout = () => {
                     to="/myEnrolledClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <LuFileSpreadsheet className="w-6 h-6"></LuFileSpreadsheet>
+                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Enrolled Classes
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/myEnrolledClasses"
-                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <MdPayment className="w-6 h-6"></MdPayment>
-                    <span className="flex-1 ml-3 whitespace-nowrap">
-                      Payment
                     </span>
                   </Link>
                 </li>
@@ -225,10 +214,13 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </aside>
-      <div className=" sm:ml-32">
+      <div className="mt-24 sm:ml-32">
         <div className="mb-5">
           <Outlet></Outlet>
         </div>
+      </div>
+      <div className="ml-32">
+        {/* <Footer></Footer> */}
       </div>
     </div>
   );

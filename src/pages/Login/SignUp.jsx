@@ -20,7 +20,7 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("new user", data);
 
-    if (!/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z].*[a-z]).{8}/.test(data.password)) {
+    if (!/(?=.[A-Z])(?=.[!@#$&])(?=.[a-z].*[a-z]).{8}/.test(data.password)) {
       setError(
         "Password must have one uppercase letter, one special character, and be at least 8 characters long"
       );
@@ -63,7 +63,7 @@ const SignUp = () => {
               .then((res) => res.json())
               .then((data) => {
                 console.log("save", data);
-                
+
                 navigate("/");
               });
           })
@@ -82,9 +82,7 @@ const SignUp = () => {
         Sign Up Now
       </h1>
       <div className="hero min-h-screen">
-        <div
-          className="hero-content flex-col lg:flex-row justify-between lg:gap-12"
-        >
+        <div className="hero-content flex-col lg:flex-row justify-between lg:gap-12">
           <div className="w-full">
             <img src={signupImg} className="w-3/4 mx-auto" alt="" />
           </div>
