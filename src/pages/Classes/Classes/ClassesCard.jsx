@@ -9,10 +9,23 @@ const ClassesCard = ({cls, user}) => {
     const {_id, class_name, photo, available_seat, students_enrolled, price, instructor, email} = cls;
 
     const handleSelectClass = (id) => {
-        if(!isLoggedIn){
+        if(!user){
             alert('Please log in before selecting the class!!')
         }
         setSelectedClass(id);
+
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(cls)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                console.log(id);
+            })
     }
     return (
         <div>

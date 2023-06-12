@@ -2,27 +2,40 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import addClassImg from '../../assets/images/addclass.jfif';
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 const AddAClass = () => {
     const {user} = useContext(AuthContext);
+    const [newClass, setNewClass] = useState([]);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=img_hosting_token`;
   
     const onSubmit = data => {
         console.log(data)
-    // const formData = new FormData();
-    // formData.append('image', data.image[0]);
-
-    // fetch(img_hosting_url, {
-    //     method: 'POST',
-    //     body: formData
-    // })
-    //     .then(res => res.json())
-    //     .then(imgResponse => {
-    //         console.log(imgResponse)
-    //     })
+    
+        fetch('http://localhost:5000/classes',{
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setNewClass(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Do you want to continue',
+                        icon: 'success',
+                        confirmButtonText: 'Yes'
+                      })
+                }
+            })
 
 
   };
