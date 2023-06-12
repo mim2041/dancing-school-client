@@ -8,7 +8,7 @@ const SelectedClasses = () => {
 
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://dancing-school-server.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -29,7 +29,7 @@ const SelectedClasses = () => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/classes/${id}`, {
+                fetch(`https://dancing-school-server.vercel.app/classes/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

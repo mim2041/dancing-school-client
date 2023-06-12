@@ -7,7 +7,7 @@ import instructorbg from '../../../assets/images/instructorbg.jpg';
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://dancing-school-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 console.log(data)

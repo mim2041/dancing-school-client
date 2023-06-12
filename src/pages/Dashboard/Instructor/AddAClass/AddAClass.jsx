@@ -16,7 +16,7 @@ const AddAClass = () => {
     const onSubmit = data => {
         console.log(data)
     
-        fetch('http://localhost:5000/classes',{
+        fetch('https://dancing-school-server.vercel.app/classes',{
             method: "POST",
             headers: {
                 'content-type': "application/json"

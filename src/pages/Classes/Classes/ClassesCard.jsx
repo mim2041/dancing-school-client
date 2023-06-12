@@ -26,7 +26,7 @@ const ClassesCard = ({ cls, user }) => {
       students_enrolled: students_enrolled + 1,
     };
 
-    fetch(`http://localhost:5000/classes/${id}`, {
+    fetch(`https://dancing-school-server.vercel.app/classes/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
