@@ -4,7 +4,7 @@ import signupImg from "../../assets/images/signup.png";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   <Toaster></Toaster>;
@@ -20,24 +20,37 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("new user", data);
 
-    // check passwords
+    if (!/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z].*[a-z]).{8}/.test(data.password)) {
+      setError(
+        "Password must have one uppercase letter, one special character, and be at least 8 characters long"
+      );
+      return;
+    }
+
     if (data.password !== data.confirm) {
       setError("Passwords do not match");
       return;
     }
 
-    // create new user with email and password
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-         const userInfo = {
-           name: data.name,
-           email: data.email,
-           photo: data.photoURL,
-           
-           role: "student",
-         };
+
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          photo: data.photoURL,
+          role: "student",
+        };
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User created successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
             fetch("https://dancing-school-server.vercel.app/users", {
@@ -50,13 +63,7 @@ const SignUp = () => {
               .then((res) => res.json())
               .then((data) => {
                 console.log("save", data);
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "User created successfully",
-                  showConfirmButton: false,
-                  timer: 1000,
-                });
+                
                 navigate("/");
               });
           })
@@ -113,14 +120,12 @@ const SignUp = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input type="password" {...register("password", { required: true,
-                                 minLength: 6,
-                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z].*[a-z]).{8}$/
-                                 })} placeholder="password" className="input input-bordered" />
-                            {errors.password?.type === 'required' && <span className="text-red-600">Password is required</span>}
-                            {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
-                            
-                            {errors.password?.type === 'pattern' && <span className="text-red-600">Password must have one uppercase latter and one special character</span>}
+                  <input
+                    type="password"
+                    {...register("password")}
+                    className="input input-bordered"
+                    required
+                  />
                 </div>
 
                 <div className="form-control lg:ml-4">
@@ -136,7 +141,6 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              {/* <p className="text-danger">{error}</p> */}
 
               <div className="form-control">
                 <label className="label">
@@ -148,11 +152,6 @@ const SignUp = () => {
                   {...register("photoURL")}
                   className="input input-bordered"
                 />
-                {/* <input
-                  type="file"
-                  className="file-input file-input-bordered w-full"
-                  required
-                /> */}
               </div>
 
               <div className="lg:flex justify-between gap-4">
@@ -181,7 +180,9 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              <p className="text-[red]">{error}</p>
+
+              <p className="text-red-500">{error}</p>
+
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -189,12 +190,13 @@ const SignUp = () => {
                   value="Sign Up"
                 />
               </div>
-                <p>
-                    Already have an account?{" "}
-                    <Link to="/login">
-                    <span>Login</span>
-                    </Link>
-                </p>
+
+              <p>
+                Already have an account?{" "}
+                <Link to="/login">
+                  <span>Login</span>
+                </Link>
+              </p>
             </form>
           </div>
         </div>

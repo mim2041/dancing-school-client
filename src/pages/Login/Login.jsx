@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import loginImg from "../../assets/images/login.png";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 import { BiHide } from "react-icons/bi";
@@ -22,8 +22,13 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
 
   
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+  
   const onSubmit = (data) => {
     console.log(data);
+
 
     signIn(data.email, data.password)
       .then((result) => {
@@ -43,9 +48,6 @@ const Login = () => {
   };
   console.log(errors);
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  }
 
   return (
     <div className="pt-28 bg-green-200">
@@ -86,7 +88,7 @@ const Login = () => {
                   className="input input-bordered relative"
                   required 
                 />
-                <button className="absolute right-10 top-44" onClick={handleShowPassword}>
+                <button className="absolute right-10 top-44" onClick={handleShowPassword} type="button">
                   { showPassword ? <BiHide/> : <BsFillEyeFill/>}
                 </button>
               </div>
