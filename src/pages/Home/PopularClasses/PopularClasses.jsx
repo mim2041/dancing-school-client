@@ -37,8 +37,8 @@ const PopularClasses = () => {
         className="mySwiper"
       >
         <div className="mt-12">
-          {sortedClasses.lenght > 6
-            ? sortedClasses.slice(0, 5).map((singleClass) => (
+          {sortedClasses.length > 6
+            ? sortedClasses.slice(0, 6).map((singleClass) => (
                 <SwiperSlide key={singleClass._id}>
                   <img src={singleClass.photo} alt="" />
                   <h2 className="text-center text-2xl text-orange-500">

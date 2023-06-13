@@ -38,7 +38,7 @@ const PopularInstructor = () => {
         >
           <div className="mt-12">
            {
-            filterData.length > 6 ? filterData.slice(0,5).map((instructor) => (
+            filterData.length > 6 ? filterData.slice(0,6).map((instructor) => (
               <SwiperSlide key={instructor._id}>
                 <img className="h-[250px]" src={instructor.photo} alt="" />
                 <h2 className=" text-2xl text-orange-500">
