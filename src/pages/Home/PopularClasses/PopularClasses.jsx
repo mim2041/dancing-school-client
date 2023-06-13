@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://dancing-school-server.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setClasses(data);
       });
   }, []);
@@ -38,7 +38,7 @@ const PopularClasses = () => {
       >
         <div className="mt-12">
           {sortedClasses.lenght > 6
-            ? sortedClasses.slice(0, 6).map((singleClass) => (
+            ? sortedClasses.slice(0, 5).map((singleClass) => (
                 <SwiperSlide key={singleClass._id}>
                   <img src={singleClass.photo} alt="" />
                   <h2 className="text-center text-2xl text-orange-500">
@@ -48,7 +48,7 @@ const PopularClasses = () => {
               ))
             : sortedClasses.map((singleClass) => (
                 <SwiperSlide key={singleClass._id}>
-                  <img src={singleClass.photo} alt="" />
+                  <img className="h-[250px]" src={singleClass.photo} alt="" />
                   <h2 className="text-center text-2xl text-orange-500">
                     {singleClass.class_name}
                   </h2>

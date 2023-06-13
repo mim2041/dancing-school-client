@@ -8,7 +8,7 @@ const PopularInstructor = () => {
     const [instructors, setInstructors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://dancing-school-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -17,7 +17,9 @@ const PopularInstructor = () => {
     } ,[])
 
 
-    const filterData = instructors.filter(instructor=>instructor.role='instructor')
+    const filterData = instructors.filter(instructor=>instructor.role === 'instructor');
+    console.log(filterData);
+
     return (
       <div className="my-12">
         <h1 className="text-4xl font-semibold text-center text-orange-500 mb-12">
@@ -35,11 +37,20 @@ const PopularInstructor = () => {
           className="mySwiper"
         >
           <div className="mt-12">
-            {filterData.map((instructor) => (
+           {
+            filterData.length > 6 ? filterData.slice(0,5).map((instructor) => (
               <SwiperSlide key={instructor._id}>
-                <img src={instructor.photo} alt="" />
+                <img className="h-[250px]" src={instructor.photo} alt="" />
                 <h2 className=" text-2xl text-orange-500">
-                  {instructor.instructor}
+                  {instructor.name}
+                </h2>
+              </SwiperSlide>
+            )) :
+            filterData.map((instructor) => (
+              <SwiperSlide key={instructor._id}>
+                <img className="h-[250px]" src={instructor.photo} alt="" />
+                <h2 className=" text-2xl text-orange-500">
+                  {instructor.name}
                 </h2>
               </SwiperSlide>
             ))}

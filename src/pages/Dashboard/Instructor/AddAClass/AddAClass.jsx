@@ -42,7 +42,7 @@ const AddAClass = () => {
             no_of_enrolled_student: 0,
           };
 
-          fetch("http://localhost:5000/instructor/addClass", {
+          fetch("https://dancing-school-server.vercel.app/instructor/addClass", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -14,7 +14,8 @@ const SelectedClasses = () => {
                 console.log(data);
                 setClasses(data);
             })
-    } ,[])
+    } ,[]);
+
 
     const handleDelete = id => {
         console.log(id)

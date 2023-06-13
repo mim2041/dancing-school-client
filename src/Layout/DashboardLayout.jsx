@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { FaUserCog } from "react-icons/fa";
+import { BiBookAdd, BiSelectMultiple } from "react-icons/bi";
+import { SiGoogleclassroom } from "react-icons/si";
 import { MdOutlineSettingsApplications } from "react-icons/md";
 import useInstructor from "../Hooks/useInstructor";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -8,7 +10,7 @@ import useAdmin from "../Hooks/useAdmin";
 import useStudent from "../Hooks/useStudent";
 import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
-
+import { motion } from "framer-motion";
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
@@ -17,7 +19,16 @@ const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleSideNav = () => setIsOpen((prevState) => !prevState);
   return (
-    <div className="mx-10 ">
+    <motion.div
+      className="mx-10 "
+      initial={{ scale: 0.1 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 360,
+        damping: 40,
+      }}
+    >
       <Navbar></Navbar>
       <button
         onClick={toggleSideNav}
@@ -26,6 +37,7 @@ const DashboardLayout = () => {
         aria-controls="cta-button-sidebar"
         type="button"
         className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        hidden
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -64,7 +76,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link
-                    to="/"
+                    to="/dashboard"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -77,7 +89,7 @@ const DashboardLayout = () => {
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                       <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
-                    <span className="ml-3">Home </span>
+                    <span className="ml-3">Dashboard </span>
                   </Link>
                 </li>
                 <li>
@@ -128,7 +140,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link
-                    to="/"
+                    to="/dashboard"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -141,7 +153,7 @@ const DashboardLayout = () => {
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                       <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
-                    <span className="ml-3">Home</span>
+                    <span className="ml-3">Dashboard</span>
                   </Link>
                 </li>
                 <li>
@@ -149,15 +161,7 @@ const DashboardLayout = () => {
                     to="/dashboard/myClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <svg
-                      aria-hidden="true"
-                      className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                    </svg>
+                    <SiGoogleclassroom></SiGoogleclassroom>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Classes
                     </span>
@@ -168,7 +172,7 @@ const DashboardLayout = () => {
                     to="/dashboard/addAClass"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <BiBookAdd className="w-6 h-6"></BiBookAdd>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Add A Class
                     </span>
@@ -180,19 +184,30 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link
-                    to="/"
+                    to="/dashboard"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
-                    <span className="flex-1 ml-3 whitespace-nowrap">Home</span>
+                    <svg
+                      aria-hidden="true"
+                      className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                    </svg>
+                    <span className="flex-1 ml-3 whitespace-nowrap">
+                      Dashboard
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/mySelectedClasses"
+                    to="/dashboard/mySelectedClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <BiSelectMultiple className="w-6 h-6"></BiSelectMultiple>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Selected Classes
                     </span>
@@ -200,10 +215,10 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <Link
-                    to="/myEnrolledClasses"
+                    to="/dashboard/myEnrolledClasses"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                    <SiGoogleclassroom className="w-6 h-6"></SiGoogleclassroom>
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       My Enrolled Classes
                     </span>
@@ -219,10 +234,8 @@ const DashboardLayout = () => {
           <Outlet></Outlet>
         </div>
       </div>
-      <div className="ml-32">
-        {/* <Footer></Footer> */}
-      </div>
-    </div>
+      <div className="ml-32">{/* <Footer></Footer> */}</div>
+    </motion.div>
   );
 };
 

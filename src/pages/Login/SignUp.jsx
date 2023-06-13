@@ -20,12 +20,15 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("new user", data);
 
-    if (!/(?=.[A-Z])(?=.[!@#$&])(?=.[a-z].*[a-z]).{8}/.test(data.password)) {
-      setError(
-        "Password must have one uppercase letter, one special character, and be at least 8 characters long"
-      );
-      return;
-    }
+    // if (!/(?=.[A-Z])(?=.[!@#$&])/.test(data.password)) {
+    //   setError(
+    //     "Password must have one uppercase letter, one special character"
+    //   );
+    //   return;
+    // } else if (data.password.length < 6) {
+    //   setError("password can not be less than 6 characters");
+    //   return;
+    // }
 
     if (data.password !== data.confirm) {
       setError("Passwords do not match");
@@ -121,6 +124,7 @@ const SignUp = () => {
                   <input
                     type="password"
                     {...register("password")}
+                    placeholder="password"
                     className="input input-bordered"
                     required
                   />
@@ -132,7 +136,7 @@ const SignUp = () => {
                   </label>
                   <input
                     type="password"
-                    placeholder="retype password"
+                    placeholder="Retype password"
                     {...register("confirm")}
                     className="input input-bordered"
                     required

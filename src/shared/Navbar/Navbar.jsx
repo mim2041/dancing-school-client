@@ -31,7 +31,7 @@ const Navbar = () => {
       </li>
 
       {user ? (
-        <>
+        <div className="flex justify-between items-center">
           <li>
             <Link to="/dashboard">
               <button className="btn">
@@ -50,11 +50,11 @@ const Navbar = () => {
             />
           </div>
           <li>
-            <button onClick={handleLogOut} className="">
+            <button onClick={handleLogOut} className="btn btn-sm btn-warning">
               Log Out
             </button>
           </li>
-        </>
+        </div>
       ) : (
         <li>
           <Link to="/login">Login</Link>
@@ -124,20 +124,36 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {navItems}
-
-            <li>
-              <button className="btn btn-square btn-ghost">
-                <label className="swap swap-rotate w-12 h-12">
-                  <input
-                    type="checkbox"
-                    onChange={handleToggle}
-                    // show toggle image based on localstorage theme
-                    checked={theme === "light" ? false : true}
-                  />
-                  Dark
-                </label>
-              </button>
-            </li>
+            {theme === "dark" ? (
+              <li>
+                <button className="btn btn-square btn-dark">
+                  <label className="swap swap-rotate w-12 h-12">
+                    <input
+                      type="checkbox"
+                      onChange={handleToggle}
+                      // show toggle image based on localstorage theme
+                      checked={theme === "light" ? false : true}
+                    />
+                    Light
+                  </label>
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button className="btn btn-square btn-dark">
+                  <label className="swap swap-rotate w-12 h-12">
+                    <input
+                      type="checkbox"
+                      onChange={handleToggle}
+                      // show toggle image based on localstorage theme
+                      checked={theme === "light" ? false : true}
+                    />
+                    Dark
+                  </label>
+                </button>
+              </li>
+            )}
+           
           </ul>
         </div>
       </div>

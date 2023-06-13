@@ -5,7 +5,7 @@ const useInstructor = (email) => {
   const [isInstructorLoading, setIsInstructorLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/instructor/${email}`)
+      fetch(`https://dancing-school-server.vercel.app/users/instructor/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

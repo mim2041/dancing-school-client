@@ -8,7 +8,7 @@ import axios from "axios";
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/classes`;
+  const url = `https://dancing-school-server.vercel.app/classes`;
 
   const [classes, setClasses] = useState([]);
 
@@ -37,7 +37,7 @@ const MyClasses = () => {
       "Are you sure, you want to delete this sellers?"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
+      fetch(`https://dancing-school-server.vercel.app/users/admin/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -104,9 +104,9 @@ const MyClasses = () => {
                   <td>{cls.price}</td>
                   <td>pending</td>
                   <td>feedback</td>
-                  <td className="flex">
-                    <button className="btn btn-warning btn-sm">Approve</button>
-                    <button className="btn btn-warning btn-sm">Deny</button>
+                  <td className="flex justify-between items-center mt-5">
+                    <button className="btn btn-warning btn-sm ">Approve</button>
+                    <button className="btn btn-warning btn-sm mx-2">Deny</button>
                     <button className="btn btn-warning btn-sm">
                       send feedback
                     </button>
