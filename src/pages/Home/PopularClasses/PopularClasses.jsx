@@ -40,7 +40,7 @@ const PopularClasses = () => {
           {sortedClasses.length > 6
             ? sortedClasses.slice(0, 6).map((singleClass) => (
                 <SwiperSlide key={singleClass._id}>
-                  <img src={singleClass.photo} alt="" />
+                  <img className="h-[250px]" src={singleClass.photo} alt="" />
                   <h2 className="text-center text-2xl text-orange-500">
                     {singleClass.class_name}
                   </h2>

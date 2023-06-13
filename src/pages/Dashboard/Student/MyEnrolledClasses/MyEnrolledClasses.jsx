@@ -14,7 +14,7 @@ const MyEnrolledClasses = () => {
 
   useEffect(() => {
     axios.get(url).then((data) => setClasses(data.data));
-  }, []);
+  }, [url]);
 
   const handleDelete = (id) => {
     console.log(id);

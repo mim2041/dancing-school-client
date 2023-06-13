@@ -14,7 +14,9 @@ const MyClasses = () => {
 
   useEffect(() => {
     axios.get(url).then((data) => setClasses(data.data));
-  }, []);
+  }, [url]);
+
+  const myClasses = classes.filter(selected => selected.email === user.email)
 
   const handleMakeUser = (id) => {
     fetch(`https://ju-book-express-server.vercel.app/users/admin/${id}`, {
@@ -53,6 +55,8 @@ const MyClasses = () => {
         });
     }
   };
+
+
   return (
     <div className="">
       {/* <div className="flex items-center justify-between">
@@ -83,8 +87,8 @@ const MyClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {classes &&
-              classes?.map((cls, i) => (
+            {myClasses &&
+              myClasses?.map((cls, i) => (
                 <tr key={cls._id}>
                   <th>{i + 1}</th>
                   <td>
